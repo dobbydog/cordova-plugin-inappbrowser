@@ -675,7 +675,7 @@ public class InAppBrowser extends CordovaPlugin {
 
                 String overrideUserAgent = preferences.getString("OverrideUserAgent", null);
                 String appendUserAgent = preferences.getString("AppendUserAgent", null);
-                
+
                 if (overrideUserAgent != null) {
                     settings.setUserAgentString(overrideUserAgent);
                 }
@@ -712,14 +712,14 @@ public class InAppBrowser extends CordovaPlugin {
 
                 // Add the views to our toolbar
                 toolbar.addView(actionButtonContainer);
-                toolbar.addView(edittext);
+                // Disable only location edittext
+                if (getShowLocationBar()) {
+                    toolbar.addView(edittext);
+                }
                 toolbar.addView(close);
 
-                // Don't add the toolbar if its been disabled
-                if (getShowLocationBar()) {
-                    // Add our toolbar to our main view/layout
-                    main.addView(toolbar);
-                }
+                // Add our toolbar to our main view/layout
+                main.addView(toolbar);
 
                 // Add our webview to our main view/layout
                 main.addView(inAppWebView);
