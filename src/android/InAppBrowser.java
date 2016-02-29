@@ -711,9 +711,9 @@ public class InAppBrowser extends CordovaPlugin {
                 actionButtonContainer.addView(forward);
 
                 // Add the views to our toolbar
-                toolbar.addView(actionButtonContainer);
-                // Disable only location edittext
+                // Disable action button and location edittext
                 if (getShowLocationBar()) {
+                    toolbar.addView(actionButtonContainer);
                     toolbar.addView(edittext);
                 }
                 toolbar.addView(close);
